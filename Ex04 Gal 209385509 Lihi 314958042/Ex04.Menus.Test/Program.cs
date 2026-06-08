@@ -20,10 +20,10 @@ namespace Ex04.Menus.Test
             Interfaces.MenuItem capitalsItem = new Interfaces.MenuItem("Count Capitals");
             Interfaces.MenuItem versionItem = new Interfaces.MenuItem("Show Version");
 
-            dateItem.AttachObserver(new DateShowAction());
-            timeItem.AttachObserver(new TimeShowAction());
-            capitalsItem.AttachObserver(new CapitalsCountAction());
-            versionItem.AttachObserver(new VersionShowAction());
+            dateItem.AttachListener(new DateShowAction());
+            timeItem.AttachListener(new TimeShowAction());
+            capitalsItem.AttachListener(new CapitalsCountAction());
+            versionItem.AttachListener(new VersionShowAction());
             dateTimeSubMenu.AddSubItem(dateItem);
             dateTimeSubMenu.AddSubItem(timeItem);
             versionSubMenu.AddSubItem(capitalsItem);

@@ -42,5 +42,15 @@
     <Compile Include="TimeShowAction.cs" />
     <Compile Include="VersionShowAction.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ex04.Menus.Events\Ex04.Menus.Events.csproj">
+      <Project>{5cb86da5-f461-4f69-bf04-d7b8cebe3daa}</Project>
+      <Name>Ex04.Menus.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ex04.Menus.Interfaces\Ex04.Menus.Interfaces.csproj">
+      <Project>{e24ff0b9-fef2-42e4-b64c-257c47595fb0}</Project>
+      <Name>Ex04.Menus.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
