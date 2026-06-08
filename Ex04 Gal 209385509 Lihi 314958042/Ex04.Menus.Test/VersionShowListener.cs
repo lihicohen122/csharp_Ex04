@@ -3,9 +3,9 @@ using Ex04.Menus.Interfaces;
 
 namespace Ex04.Menus.Test
 {
-    public class VersionShowAction : IMenuItemListener
+    public class VersionShowListener : IMenuItemListener
     {
-        public void ReportSelected(MenuItem i_MenuItem)
+        public void ReportSelect(MenuItem i_MenuItem)
         {
             Console.WriteLine("App Version: 26.2.4.7310");
         }

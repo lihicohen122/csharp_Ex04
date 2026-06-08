@@ -2,6 +2,6 @@ namespace Ex04.Menus.Interfaces
 {
     public interface IMenuItemListener
     {
-        void ReportSelected(MenuItem i_MenuItem);
+        void ReportSelect(MenuItem i_MenuItem);
     }
 }

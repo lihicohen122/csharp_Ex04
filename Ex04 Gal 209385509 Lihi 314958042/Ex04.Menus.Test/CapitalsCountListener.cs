@@ -3,9 +3,9 @@ using Ex04.Menus.Interfaces;
 
 namespace Ex04.Menus.Test
 {
-    public class CapitalsCountAction : IMenuItemListener
+    public class CapitalsCountListener : IMenuItemListener
     {
-        public void ReportSelected(MenuItem i_MenuItem)
+        public void ReportSelect(MenuItem i_MenuItem)
         {
             string userInput = string.Empty;
             int upperCaseCount = 0;

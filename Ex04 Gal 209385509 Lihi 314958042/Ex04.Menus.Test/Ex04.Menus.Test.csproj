@@ -36,11 +36,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CapitalsCountAction.cs" />
-    <Compile Include="DateShowAction.cs" />
+    <Compile Include="CapitalsCountListener.cs" />
+    <Compile Include="DateShowListener.cs" />
+    <Compile Include="EventsMenuTest.cs" />
+    <Compile Include="InterfaceMenuTest.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="TimeShowAction.cs" />
-    <Compile Include="VersionShowAction.cs" />
+    <Compile Include="TimeShowListener.cs" />
+    <Compile Include="VersionShowListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ex04.Menus.Events\Ex04.Menus.Events.csproj">

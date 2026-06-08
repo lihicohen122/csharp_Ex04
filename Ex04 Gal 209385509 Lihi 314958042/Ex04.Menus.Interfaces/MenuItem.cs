@@ -7,13 +7,13 @@ namespace Ex04.Menus.Interfaces
     {
         private readonly string r_Title;
         private readonly List<MenuItem> r_SubItems;
-        private IMenuItemListener m_Listener;
+        private List<IMenuItemListener> r_Listeners;
 
         public MenuItem(string i_Title)
         {
             r_Title = i_Title;
             r_SubItems = new List<MenuItem>();
-            m_Listener = null;
+            r_Listeners = new  List<IMenuItemListener>();
         }
 
         public string Title
@@ -26,9 +26,14 @@ namespace Ex04.Menus.Interfaces
             get { return r_SubItems; }
         }
 
-        public void AttachListener(IMenuItemListener i_Listener)
+        public void AddListener(IMenuItemListener i_Listener)
         {
-            m_Listener = i_Listener;
+            r_Listeners.Add(i_Listener);
+        }
+
+        public void RemoveListener(IMenuItemListener i_Listener)
+        {
+            r_Listeners.Remove(i_Listener);
         }
 
         public void AddSubItem(MenuItem i_MenuItem)
@@ -54,13 +59,15 @@ namespace Ex04.Menus.Interfaces
                 else
                 {
                     MenuItem selectedItem = r_SubItems[userChoice - 1];
+                    const bool v_IsRoot = true;
+                    
                     if(selectedItem.SubItems.Count > 0)
                     {
-                        selectedItem.Show(false);
+                        selectedItem.Show(!v_IsRoot);
                     }
                     else
                     {
-                        selectedItem.notifyListener();
+                        selectedItem.notifyAllListeners();
                     }
                 }
             }
@@ -69,25 +76,15 @@ namespace Ex04.Menus.Interfaces
         private void printMenu(bool i_IsRoot)
         {
             int itemIndex = 1;
-            string exitOrBackMsg = string.Empty;
+            string exitOrBackMsg = i_IsRoot ? "Exit" : "Back";
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"** {r_Title} **");
             Console.ResetColor();
-
             foreach(MenuItem item in r_SubItems)
             {
                 Console.WriteLine($"{itemIndex}. {item.Title}");
                 itemIndex++;
-            }
-
-            if(i_IsRoot)
-            {
-                exitOrBackMsg = "Exit";
-            }
-            else
-            {
-                exitOrBackMsg = "Back";
             }
 
             Console.WriteLine($"0. {exitOrBackMsg}");
@@ -97,23 +94,14 @@ namespace Ex04.Menus.Interfaces
         {
             int userChoice = -1;
             bool isInputValid = false;
-            string exitOrBackStr = string.Empty;
-
-            if(i_IsRoot)
-            {
-                exitOrBackStr = "exit";
-            }
-            else
-            {
-                exitOrBackStr = "go back";
-            }
+            string exitOrBackStr = i_IsRoot ? "exit" : "go back";
 
             while(!isInputValid)
             {
                 Console.WriteLine($"Please enter your choice (1-{r_SubItems.Count} or 0 to {exitOrBackStr}):");
                 string userInput = Console.ReadLine();
+                
                 isInputValid = int.TryParse(userInput, out userChoice);
-
                 if(!isInputValid || userChoice < 0 || userChoice > r_SubItems.Count)
                 {
                     Console.WriteLine("Invalid input. Please try again.");
@@ -124,12 +112,16 @@ namespace Ex04.Menus.Interfaces
             return userChoice;
         }
 
-        private void notifyListener()
+        private void notifyAllListeners()
         {
-            if(m_Listener != null)
+            if(r_Listeners.Count > 0)
             {
                 Console.Clear();
-                m_Listener.ReportSelected(this);
+                foreach(IMenuItemListener listener in r_Listeners)
+                {
+                    listener.ReportSelect(this);
+                }
+                
                 Console.WriteLine("Press 'Enter' to continue...");
                 Console.ReadLine();
             }
