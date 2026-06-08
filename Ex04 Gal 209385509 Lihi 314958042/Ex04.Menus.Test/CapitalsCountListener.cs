@@ -9,8 +9,7 @@ namespace Ex04.Menus.Test
         {
             string userInput = string.Empty;
             int upperCaseCount = 0;
-
-            Console.WriteLine("Please enter a sentence:");
+            
             userInput = Console.ReadLine();
             foreach(char currentChar in userInput)
             {
@@ -20,7 +19,7 @@ namespace Ex04.Menus.Test
                 }
             }
 
-            Console.WriteLine($"> There are {upperCaseCount} uppercase letters in your text.");
+            Console.WriteLine($"There are {upperCaseCount} uppercase letters in your text.");
         }
     }
 }

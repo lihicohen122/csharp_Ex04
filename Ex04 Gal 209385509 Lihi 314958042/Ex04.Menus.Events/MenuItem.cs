@@ -35,10 +35,8 @@ namespace Ex04.Menus.Events
         {
             if(Selected != null)
             {
-                Console.Clear();
                 Selected.Invoke();
-                Console.WriteLine("Press 'Enter' to continue...");
-                Console.ReadLine();
+                Console.WriteLine();
             }
         }
 
@@ -47,9 +45,9 @@ namespace Ex04.Menus.Events
             bool isRunning = true;
             int userChoice = -1;
 
+            Console.Clear();
             while(isRunning)
             {
-                Console.Clear();
                 printMenu(i_IsRoot);
                 userChoice = getUserChoice(i_IsRoot);
 
@@ -62,7 +60,10 @@ namespace Ex04.Menus.Events
                     MenuItem selectedItem = r_SubItems[userChoice - 1];
                     if(selectedItem.SubItems.Count > 0)
                     {
-                        selectedItem.Show(false);
+                        const bool v_IsRoot = true;
+                        
+                        selectedItem.Show(!v_IsRoot);
+                        Console.Clear();
                     }
                     else
                     {

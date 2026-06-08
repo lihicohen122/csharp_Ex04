@@ -46,9 +46,9 @@ namespace Ex04.Menus.Interfaces
             bool isRunning = true;
             int userChoice = -1;
 
+            Console.Clear();
             while(isRunning)
             {
-                Console.Clear();
                 printMenu(i_IsRoot);
                 userChoice = getUserChoice(i_IsRoot);
 
@@ -64,6 +64,7 @@ namespace Ex04.Menus.Interfaces
                     if(selectedItem.SubItems.Count > 0)
                     {
                         selectedItem.Show(!v_IsRoot);
+                        Console.Clear();
                     }
                     else
                     {
@@ -116,14 +117,12 @@ namespace Ex04.Menus.Interfaces
         {
             if(r_Listeners.Count > 0)
             {
-                Console.Clear();
                 foreach(IMenuItemListener listener in r_Listeners)
                 {
                     listener.ReportSelect(this);
                 }
                 
-                Console.WriteLine("Press 'Enter' to continue...");
-                Console.ReadLine();
+                Console.WriteLine();
             }
         }
     }

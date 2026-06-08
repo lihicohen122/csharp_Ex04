@@ -7,7 +7,7 @@ namespace Ex04.Menus.Test
     {
         public void ReportSelect(MenuItem i_MenuItem)
         {
-            Console.WriteLine($"> Current Date is {DateTime.Now.ToString("dd/MM/yyyy")}");
+            Console.WriteLine($"Current Date is {DateTime.Now.ToString("dd/MM/yyyy")}");
         }
     }
 }

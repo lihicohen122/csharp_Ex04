@@ -5,6 +5,7 @@ namespace Ex04.Menus.Test
 {
     public class EventsMenuTest
     {
+        private const string k_Version = "26.2.4.7310";
         private MainMenu m_MainMenu;
 
         public EventsMenuTest()
@@ -52,36 +53,34 @@ namespace Ex04.Menus.Test
 
         private void showCurrentDate()
         {
-            Console.WriteLine($"> Current Date is {DateTime.Now.ToString("dd/MM/yyyy")}");
+            Console.WriteLine($"Current Date is {DateTime.Now.ToString("dd/MM/yyyy")}");
         }
 
         private void showCurrentTime()
         {
-            Console.WriteLine($"> Current Time is {DateTime.Now.ToString("HH:mm:ss")}");
+            Console.WriteLine($"Current Time is {DateTime.Now.ToString("HH:mm:ss")}");
         }
 
         private void showVersion()
         {
-            Console.WriteLine("App Version: 26.2.4.7310");
+            Console.WriteLine($"App Version: {k_Version}");
         }
 
         private void countCapitals()
         {
             string userInput = string.Empty;
             int upperCaseCount = 0;
-
-            Console.WriteLine("Please enter a sentence:");
+            
             userInput = Console.ReadLine();
-
-            foreach (char currentChar in userInput)
+            foreach(char currentChar in userInput)
             {
-                if (char.IsUpper(currentChar))
+                if(char.IsUpper(currentChar))
                 {
                     upperCaseCount++;
                 }
             }
 
-            Console.WriteLine($"> There are {upperCaseCount} uppercase letters in your text.");
+            Console.WriteLine($"There are {upperCaseCount} uppercase letters in your text.");
         }
 
         public void Show()
