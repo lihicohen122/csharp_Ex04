@@ -117,6 +117,7 @@ namespace Ex04.Menus.Interfaces
         {
             if(r_Listeners.Count > 0)
             {
+                Console.Clear();
                 foreach(IMenuItemListener listener in r_Listeners)
                 {
                     listener.ReportSelect(this);

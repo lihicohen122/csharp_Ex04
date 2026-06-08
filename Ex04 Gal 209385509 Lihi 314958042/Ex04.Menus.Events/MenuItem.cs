@@ -35,6 +35,7 @@ namespace Ex04.Menus.Events
         {
             if(Selected != null)
             {
+                Console.Clear();
                 Selected.Invoke();
                 Console.WriteLine();
             }
