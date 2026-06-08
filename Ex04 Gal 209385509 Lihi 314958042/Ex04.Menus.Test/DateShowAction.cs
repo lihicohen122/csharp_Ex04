@@ -3,7 +3,7 @@ using Ex04.Menus.Interfaces;
 
 namespace Ex04.Menus.Test
 {
-    public class DataShowAction : IMenuItemListener
+    public class DateShowAction : IMenuItemListener
     {
         public void ReportSelected(MenuItem i_MenuItem)
         {

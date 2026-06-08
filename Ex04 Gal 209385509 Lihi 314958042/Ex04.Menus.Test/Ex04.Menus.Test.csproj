@@ -37,7 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CapitalsCountAction.cs" />
-    <Compile Include="DataShowAction.cs" />
+    <Compile Include="DateShowAction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="TimeShowAction.cs" />
     <Compile Include="VersionShowAction.cs" />
