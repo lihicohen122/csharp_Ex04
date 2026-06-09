@@ -7,7 +7,7 @@ namespace Ex04.Menus.Events
     {
         private readonly string r_Title;
         private readonly List<MenuItem> r_SubItems;
-        public event Action Selected;
+        public event Action OptionSelected;
 
         private void printMenu(bool i_IsRoot)
         {
@@ -49,12 +49,12 @@ namespace Ex04.Menus.Events
             return userChoice;
         }
 
-        protected virtual void OnSelected()
+        protected virtual void OnOptionSelected()
         {
-            if(Selected != null)
+            if(OptionSelected != null)
             {
                 Console.Clear();
-                Selected.Invoke();
+                OptionSelected.Invoke();
                 Console.WriteLine();
             }
         }
@@ -107,7 +107,7 @@ namespace Ex04.Menus.Events
                     }
                     else
                     {
-                        selectedItem.OnSelected();
+                        selectedItem.OnOptionSelected();
                     }
                 }
             }

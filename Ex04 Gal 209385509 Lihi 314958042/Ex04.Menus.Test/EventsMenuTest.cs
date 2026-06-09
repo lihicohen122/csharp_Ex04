@@ -6,24 +6,24 @@ namespace Ex04.Menus.Test
     public class EventsMenuTest
     {
         private const string k_Version = "26.2.4.7310";
-        private MainMenu m_MainMenu;
+        private readonly MainMenu r_MainMenu;
 
-        private void showCurrentDate()
+        private void dateItem_OptionSelected()
         {
             Console.WriteLine($"Current Date is {DateTime.Now.ToString("dd/MM/yyyy")}");
         }
 
-        private void showCurrentTime()
+        private void timeItem_OptionSelected()
         {
             Console.WriteLine($"Current Time is {DateTime.Now.ToString("HH:mm:ss")}");
         }
 
-        private void showVersion()
+        private void versionItem_OptionSelected()
         {
             Console.WriteLine($"App Version: {k_Version}");
         }
 
-        private void countCapitals()
+        private void capitalsItem_OptionSelected()
         {
             int upperCaseCount = 0;
             string userInput = Console.ReadLine();
@@ -44,8 +44,8 @@ namespace Ex04.Menus.Test
             MenuItem dateTimeSubMenu = createDateTimeSubMenu();
             MenuItem versionSubMenu = createVersionAndCapitalsSubMenu();
 
-            m_MainMenu.RootMenuItem.AddSubItem(dateTimeSubMenu);
-            m_MainMenu.RootMenuItem.AddSubItem(versionSubMenu);
+            r_MainMenu.RootMenuItem.AddSubItem(dateTimeSubMenu);
+            r_MainMenu.RootMenuItem.AddSubItem(versionSubMenu);
         }
 
         private MenuItem createDateTimeSubMenu()
@@ -54,8 +54,8 @@ namespace Ex04.Menus.Test
             MenuItem dateItem = new MenuItem("Show Current Date");
             MenuItem timeItem = new MenuItem("Show Current Time");
 
-            dateItem.Selected += showCurrentDate;
-            timeItem.Selected += showCurrentTime;
+            dateItem.OptionSelected += dateItem_OptionSelected;
+            timeItem.OptionSelected += timeItem_OptionSelected;
             dateTimeSubMenu.AddSubItem(dateItem);
             dateTimeSubMenu.AddSubItem(timeItem);
 
@@ -68,8 +68,8 @@ namespace Ex04.Menus.Test
             MenuItem capitalsItem = new MenuItem("Count Capitals");
             MenuItem versionItem = new MenuItem("Show Version");
 
-            capitalsItem.Selected += countCapitals;
-            versionItem.Selected += showVersion;
+            capitalsItem.OptionSelected += capitalsItem_OptionSelected;
+            versionItem.OptionSelected += versionItem_OptionSelected;
             versionSubMenu.AddSubItem(capitalsItem);
             versionSubMenu.AddSubItem(versionItem);
 
@@ -78,13 +78,13 @@ namespace Ex04.Menus.Test
 
         public EventsMenuTest()
         {
-            m_MainMenu = new MainMenu("Delegates Main Menu");
+            r_MainMenu = new MainMenu("Delegates Main Menu");
             buildMenu();
         }
 
         public void Show()
         {
-            m_MainMenu.Show();
+            r_MainMenu.Show();
         }
     }
 }

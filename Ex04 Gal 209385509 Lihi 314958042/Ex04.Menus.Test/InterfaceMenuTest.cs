@@ -4,15 +4,15 @@ namespace Ex04.Menus.Test
 {
     public class InterfaceMenuTest
     {
-        private MainMenu m_MainMenu;
+        private readonly MainMenu r_MainMenu;
 
         private void buildMenu()
         {
             MenuItem dateTimeSubMenu = createDateTimeSubMenu();
             MenuItem versionSubMenu = createVersionSubMenu();
 
-            m_MainMenu.RootMenuItem.AddSubItem(dateTimeSubMenu);
-            m_MainMenu.RootMenuItem.AddSubItem(versionSubMenu);
+            r_MainMenu.RootMenuItem.AddSubItem(dateTimeSubMenu);
+            r_MainMenu.RootMenuItem.AddSubItem(versionSubMenu);
         }
 
         private MenuItem createDateTimeSubMenu()
@@ -45,13 +45,13 @@ namespace Ex04.Menus.Test
 
         public InterfaceMenuTest()
         {
-            m_MainMenu = new MainMenu("Interfaces Main Menu");
+            r_MainMenu = new MainMenu("Interfaces Main Menu");
             buildMenu();
         }
 
         public void Show()
         {
-            m_MainMenu.Show();
+            r_MainMenu.Show();
         }
     }
 }
