@@ -61,22 +61,22 @@ namespace Ex04.Menus.Interfaces
                 Console.WriteLine();
             }
         }
+        
+        private string Title
+        {
+            get { return r_Title; }
+        }
+
+        private List<MenuItem> SubItems
+        {
+            get { return r_SubItems; }
+        }
 
         public MenuItem(string i_Title)
         {
             r_Title = i_Title;
             r_SubItems = new List<MenuItem>();
             r_Listeners = new List<IMenuItemListener>();
-        }
-
-        public string Title
-        {
-            get { return r_Title; }
-        }
-
-        public List<MenuItem> SubItems
-        {
-            get { return r_SubItems; }
         }
 
         public void AddListener(IMenuItemListener i_Listener)

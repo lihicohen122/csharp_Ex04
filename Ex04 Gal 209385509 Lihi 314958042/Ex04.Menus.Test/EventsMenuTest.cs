@@ -28,11 +28,14 @@ namespace Ex04.Menus.Test
             int upperCaseCount = 0;
             string userInput = Console.ReadLine();
 
-            foreach(char currentChar in userInput)
+            if(!string.IsNullOrEmpty(userInput))
             {
-                if(char.IsUpper(currentChar))
+                foreach(char currentChar in userInput)
                 {
-                    upperCaseCount++;
+                    if(char.IsUpper(currentChar))
+                    {
+                        upperCaseCount++;
+                    }
                 }
             }
 

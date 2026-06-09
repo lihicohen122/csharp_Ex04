@@ -48,6 +48,16 @@ namespace Ex04.Menus.Events
 
             return userChoice;
         }
+        
+        private string Title
+        {
+            get { return r_Title; }
+        }
+
+        private List<MenuItem> SubItems
+        {
+            get { return r_SubItems; }
+        }
 
         protected virtual void OnOptionSelected()
         {
@@ -63,16 +73,6 @@ namespace Ex04.Menus.Events
         {
             r_Title = i_Title;
             r_SubItems = new List<MenuItem>();
-        }
-
-        public string Title
-        {
-            get { return r_Title; }
-        }
-
-        public List<MenuItem> SubItems
-        {
-            get { return r_SubItems; }
         }
 
         public void AddSubItem(MenuItem i_MenuItem)
