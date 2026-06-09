@@ -3,7 +3,7 @@ using Ex04.Menus.Interfaces;
 
 namespace Ex04.Menus.Test
 {
-    public class CapitalsCountListener : IMenuItemListener
+    internal class CapitalsCountListener : IMenuItemListener
     {
         public void ReportSelect(MenuItem i_MenuItem)
         {

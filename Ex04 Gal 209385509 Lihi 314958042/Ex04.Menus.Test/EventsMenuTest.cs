@@ -3,7 +3,7 @@ using Ex04.Menus.Events;
 
 namespace Ex04.Menus.Test
 {
-    public class EventsMenuTest
+    internal class EventsMenuTest
     {
         private const string k_Version = "26.2.4.7310";
         private readonly MainMenu r_MainMenu;

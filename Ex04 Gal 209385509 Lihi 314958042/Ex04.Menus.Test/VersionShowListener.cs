@@ -3,7 +3,7 @@ using Ex04.Menus.Interfaces;
 
 namespace Ex04.Menus.Test
 {
-    public class VersionShowListener : IMenuItemListener
+    internal class VersionShowListener : IMenuItemListener
     {
         private const string k_Version = "26.2.4.7310";
         
