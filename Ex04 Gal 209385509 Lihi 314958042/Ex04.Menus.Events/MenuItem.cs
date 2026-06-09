@@ -7,8 +7,57 @@ namespace Ex04.Menus.Events
     {
         private readonly string r_Title;
         private readonly List<MenuItem> r_SubItems;
-        
         public event Action Selected;
+
+        private void printMenu(bool i_IsRoot)
+        {
+            int itemIndex = 1;
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"** {r_Title} **");
+            Console.ResetColor();
+            foreach(MenuItem item in r_SubItems)
+            {
+                Console.WriteLine($"{itemIndex}. {item.Title}");
+                itemIndex++;
+            }
+
+            string exitOrBackMsg = i_IsRoot ? "Exit" : "Back";
+
+            Console.WriteLine($"0. {exitOrBackMsg}");
+        }
+
+        private int getUserChoice(bool i_IsRoot)
+        {
+            int userChoice = -1;
+            bool isInputValid = false;
+            string exitOrBackStr = i_IsRoot ? "exit" : "go back";
+
+            while(!isInputValid)
+            {
+                Console.WriteLine($"Please enter your choice (1-{r_SubItems.Count} or 0 to {exitOrBackStr}):");
+                string userInput = Console.ReadLine();
+
+                isInputValid = int.TryParse(userInput, out userChoice);
+                if(!isInputValid || userChoice < 0 || userChoice > r_SubItems.Count)
+                {
+                    Console.WriteLine("Invalid input. Please try again.");
+                    isInputValid = false;
+                }
+            }
+
+            return userChoice;
+        }
+
+        protected virtual void OnSelected()
+        {
+            if(Selected != null)
+            {
+                Console.Clear();
+                Selected.Invoke();
+                Console.WriteLine();
+            }
+        }
 
         public MenuItem(string i_Title)
         {
@@ -31,26 +80,15 @@ namespace Ex04.Menus.Events
             r_SubItems.Add(i_MenuItem);
         }
 
-        protected virtual void OnSelected()
-        {
-            if(Selected != null)
-            {
-                Console.Clear();
-                Selected.Invoke();
-                Console.WriteLine();
-            }
-        }
-
         public void Show(bool i_IsRoot)
         {
             bool isRunning = true;
-            int userChoice = -1;
 
             Console.Clear();
             while(isRunning)
             {
                 printMenu(i_IsRoot);
-                userChoice = getUserChoice(i_IsRoot);
+                int userChoice = getUserChoice(i_IsRoot);
 
                 if(userChoice == 0)
                 {
@@ -59,6 +97,7 @@ namespace Ex04.Menus.Events
                 else
                 {
                     MenuItem selectedItem = r_SubItems[userChoice - 1];
+
                     if(selectedItem.SubItems.Count > 0)
                     {
                         const bool v_IsRoot = true;
@@ -72,63 +111,6 @@ namespace Ex04.Menus.Events
                     }
                 }
             }
-        }
-
-        private void printMenu(bool i_IsRoot)
-        {
-            int itemIndex = 1;
-            string exitOrBackMsg = string.Empty;
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"** {r_Title} **");
-            Console.ResetColor();
-            foreach(MenuItem item in r_SubItems)
-            {
-                Console.WriteLine($"{itemIndex}. {item.Title}");
-                itemIndex++;
-            }
-
-            if(i_IsRoot)
-            {
-                exitOrBackMsg = "Exit";
-            }
-            else
-            {
-                exitOrBackMsg = "Back";
-            }
-
-            Console.WriteLine($"0. {exitOrBackMsg}");
-        }
-
-        private int getUserChoice(bool i_IsRoot)
-        {
-            int userChoice = -1;
-            bool isInputValid = false;
-            string exitOrBackStr = string.Empty;
-
-            if(i_IsRoot)
-            {
-                exitOrBackStr = "exit";
-            }
-            else
-            {
-                exitOrBackStr = "go back";
-            }
-
-            while(!isInputValid)
-            {
-                Console.WriteLine($"Please enter your choice (1-{r_SubItems.Count} or 0 to {exitOrBackStr}):");
-                string userInput = Console.ReadLine();
-                
-                isInputValid = int.TryParse(userInput, out userChoice);
-                if(!isInputValid || userChoice < 0 || userChoice > r_SubItems.Count)
-                {
-                    Console.WriteLine("Invalid input. Please try again.");
-                    isInputValid = false;
-                }
-            }
-
-            return userChoice;
         }
     }
 }

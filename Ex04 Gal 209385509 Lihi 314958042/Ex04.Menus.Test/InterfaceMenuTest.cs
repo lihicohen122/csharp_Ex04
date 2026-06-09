@@ -6,12 +6,6 @@ namespace Ex04.Menus.Test
     {
         private MainMenu m_MainMenu;
 
-        public InterfaceMenuTest()
-        {
-            m_MainMenu = new MainMenu("Interfaces Main Menu");
-            buildMenu();
-        }
-
         private void buildMenu()
         {
             MenuItem dateTimeSubMenu = createDateTimeSubMenu();
@@ -47,6 +41,12 @@ namespace Ex04.Menus.Test
             versionSubMenu.AddSubItem(versionItem);
 
             return versionSubMenu;
+        }
+
+        public InterfaceMenuTest()
+        {
+            m_MainMenu = new MainMenu("Interfaces Main Menu");
+            buildMenu();
         }
 
         public void Show()

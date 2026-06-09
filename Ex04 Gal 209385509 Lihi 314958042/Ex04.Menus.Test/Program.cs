@@ -5,9 +5,9 @@ namespace Ex04.Menus.Test
         public static void Main()
         {
             InterfaceMenuTest interfaceMenuTest = new InterfaceMenuTest();
-            interfaceMenuTest.Show();
-            
             EventsMenuTest eventsMenuTest = new EventsMenuTest();
+
+            interfaceMenuTest.Show();
             eventsMenuTest.Show();
         }
     }

@@ -16,7 +16,9 @@ namespace Ex04.Menus.Events
 
         public void Show()
         {
-            r_RootMenuItem.Show(true);
+            const bool v_IsRoot = true;
+
+            r_RootMenuItem.Show(v_IsRoot);
         }
     }
 }

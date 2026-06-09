@@ -7,10 +7,9 @@ namespace Ex04.Menus.Test
     {
         public void ReportSelect(MenuItem i_MenuItem)
         {
-            string userInput = string.Empty;
             int upperCaseCount = 0;
-            
-            userInput = Console.ReadLine();
+            string userInput = Console.ReadLine();
+
             foreach(char currentChar in userInput)
             {
                 if(char.IsUpper(currentChar))

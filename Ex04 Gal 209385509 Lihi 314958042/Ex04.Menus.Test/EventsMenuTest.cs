@@ -8,16 +8,41 @@ namespace Ex04.Menus.Test
         private const string k_Version = "26.2.4.7310";
         private MainMenu m_MainMenu;
 
-        public EventsMenuTest()
+        private void showCurrentDate()
         {
-            m_MainMenu = new MainMenu("Delegates Main Menu");
-            buildMenu();
+            Console.WriteLine($"Current Date is {DateTime.Now.ToString("dd/MM/yyyy")}");
+        }
+
+        private void showCurrentTime()
+        {
+            Console.WriteLine($"Current Time is {DateTime.Now.ToString("HH:mm:ss")}");
+        }
+
+        private void showVersion()
+        {
+            Console.WriteLine($"App Version: {k_Version}");
+        }
+
+        private void countCapitals()
+        {
+            int upperCaseCount = 0;
+            string userInput = Console.ReadLine();
+
+            foreach(char currentChar in userInput)
+            {
+                if(char.IsUpper(currentChar))
+                {
+                    upperCaseCount++;
+                }
+            }
+
+            Console.WriteLine($"There are {upperCaseCount} uppercase letters in your text.");
         }
 
         private void buildMenu()
         {
             MenuItem dateTimeSubMenu = createDateTimeSubMenu();
-            MenuItem versionSubMenu = createVersionSubMenu();
+            MenuItem versionSubMenu = createVersionAndCapitalsSubMenu();
 
             m_MainMenu.RootMenuItem.AddSubItem(dateTimeSubMenu);
             m_MainMenu.RootMenuItem.AddSubItem(versionSubMenu);
@@ -37,7 +62,7 @@ namespace Ex04.Menus.Test
             return dateTimeSubMenu;
         }
 
-        private MenuItem createVersionSubMenu()
+        private MenuItem createVersionAndCapitalsSubMenu()
         {
             MenuItem versionSubMenu = new MenuItem("Version and Capitals");
             MenuItem capitalsItem = new MenuItem("Count Capitals");
@@ -51,36 +76,10 @@ namespace Ex04.Menus.Test
             return versionSubMenu;
         }
 
-        private void showCurrentDate()
+        public EventsMenuTest()
         {
-            Console.WriteLine($"Current Date is {DateTime.Now.ToString("dd/MM/yyyy")}");
-        }
-
-        private void showCurrentTime()
-        {
-            Console.WriteLine($"Current Time is {DateTime.Now.ToString("HH:mm:ss")}");
-        }
-
-        private void showVersion()
-        {
-            Console.WriteLine($"App Version: {k_Version}");
-        }
-
-        private void countCapitals()
-        {
-            string userInput = string.Empty;
-            int upperCaseCount = 0;
-            
-            userInput = Console.ReadLine();
-            foreach(char currentChar in userInput)
-            {
-                if(char.IsUpper(currentChar))
-                {
-                    upperCaseCount++;
-                }
-            }
-
-            Console.WriteLine($"There are {upperCaseCount} uppercase letters in your text.");
+            m_MainMenu = new MainMenu("Delegates Main Menu");
+            buildMenu();
         }
 
         public void Show()
