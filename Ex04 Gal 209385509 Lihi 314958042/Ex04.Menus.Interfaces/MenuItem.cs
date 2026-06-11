@@ -84,11 +84,6 @@ namespace Ex04.Menus.Interfaces
             r_Listeners.Add(i_Listener);
         }
 
-        public void RemoveListener(IMenuItemListener i_Listener)
-        {
-            r_Listeners.Remove(i_Listener);
-        }
-
         public void AddSubItem(MenuItem i_MenuItem)
         {
             r_SubItems.Add(i_MenuItem);
